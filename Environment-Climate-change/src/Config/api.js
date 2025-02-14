@@ -1,0 +1,1 @@
+const BASE_URL = "https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json"
