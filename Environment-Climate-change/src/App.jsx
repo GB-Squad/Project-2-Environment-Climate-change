@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Navbar from './Components/Navbar'
-import AnimalsList from './Components/AnimalsListing' // Fixed import name
+import AnimalsList from './Pages/AnimalsListing'
 
 function App() {
   const [count, setCount] = useState(0)
