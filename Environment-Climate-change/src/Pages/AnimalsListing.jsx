@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../Pages/AnimalsList.css"
 
 function AnimalsList() {
     const [DisplayAnimal, setAnimal] = useState([]);
@@ -21,10 +22,17 @@ function AnimalsList() {
 
 
     return (
-        <div>
+        <div className="container">
             {DisplayAnimal.map((animal) => (
                 <div key={animal.id}>
-                    <h3>{animal.class}</h3>
+                    <div className="container">
+                        <img className="img-display" src={animal.image_url} alt="animal image" />
+                        <h3>Common Name:{animal.common_name}</h3>
+                        <h3>Status : {animal.conservation_status.iucn_status}</h3>
+                    </div>
+
+
+
                 </div>
             ))}
 
