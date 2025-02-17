@@ -1,17 +1,23 @@
 import { useState } from 'react'
 import './App.css'
 import Navbar from './Components/Navbar'
-import AnimalsList from './Pages/AnimalsListing'
+import AnimalsList from './Pages/AnimalsListing' // Fixed import name
+import HomePage from './Pages/HomePage'
+import { Routes, Route } from 'react-router-dom'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <h1> Wildlife Vulnerability Tracker</h1>
       <Navbar />
       <div>
-        <AnimalsList />
-        <h1> Animals Vulnerability Mapping</h1>
+        <Routes>
+        <Route path="/home" element= {<HomePage/>} ></Route> 
+        <Route path="/animalList" element= {<AnimalsList/>} ></Route> 
+        </Routes>
       </div>
     </>
   )
