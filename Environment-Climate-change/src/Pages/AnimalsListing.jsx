@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Pages/AnimalsList.css"
+import { Link } from "react-router-dom";
 
 function AnimalsList() {
     const [DisplayAnimal, setAnimal] = useState([]);
@@ -18,35 +19,20 @@ function AnimalsList() {
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
-    }, []);
-
-
-    return (
-        <>
-
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-12 col-md-4">one</div>
-                    <div class="col-12 col-md-4">two</div>
-                    <div class="col-12 col-md-4">theww</div>
-                    <div class="col-12 col-md-4">four</div>
-                    <div class="col-12 col-md-4">five</div>
-                    <div class="col-12 col-md-4">six</div>
-                    <div class="col-12 col-md-4">seven</div>
-
+    }, []); return (<>
+        <div className="items-list">
+            {DisplayAnimal.map((animal) => (
+                <div className="item" key={animal.id}>
+                    <img className="img-display" src={animal.image_url} alt="animal image" />
+                    <h4><strong>Common Name:</strong>{animal.common_name}</h4>
+                    <h3>Status : {animal.conservation_status.iucn_status}</h3>
+                    <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
+                        Animal Details
+                    </Link>
                 </div>
-            </div>
-
-            <div className="items-list">
-                {DisplayAnimal.map((animal) => (
-                    <div className="item" key={animal.id}>
-                        <img className="img-display" src={animal.image_url} alt="animal image" />
-                        <h3>Common Name:{animal.common_name}</h3>
-                        <h3>Status : {animal.conservation_status.iucn_status}</h3>
-                    </div>
-                ))}
-            </div>
-        </>
+            ))}
+        </div>
+    </>
     );
 }
 
