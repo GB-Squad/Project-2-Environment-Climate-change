@@ -24,7 +24,7 @@ function AnimalsList() {
         <div>
             {DisplayAnimal.map((animal) => (
                 <div key={animal.id}>
-                    <h3>{animal.class}</h3>
+                    <h3>Class:{animal.class}</h3>
                 </div>
             ))}
 
