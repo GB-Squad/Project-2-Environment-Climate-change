@@ -22,23 +22,31 @@ function AnimalsList() {
 
 
     return (
-        <div className="container">
-            {DisplayAnimal.map((animal) => (
-                <div key={animal.id}>
-                    <div className="container">
+        <>
+
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-12 col-md-4">one</div>
+                    <div class="col-12 col-md-4">two</div>
+                    <div class="col-12 col-md-4">theww</div>
+                    <div class="col-12 col-md-4">four</div>
+                    <div class="col-12 col-md-4">five</div>
+                    <div class="col-12 col-md-4">six</div>
+                    <div class="col-12 col-md-4">seven</div>
+
+                </div>
+            </div>
+
+            <div className="items-list">
+                {DisplayAnimal.map((animal) => (
+                    <div className="item" key={animal.id}>
                         <img className="img-display" src={animal.image_url} alt="animal image" />
                         <h3>Common Name:{animal.common_name}</h3>
                         <h3>Status : {animal.conservation_status.iucn_status}</h3>
                     </div>
-
-
-
-                </div>
-            ))}
-
-
-
-        </div>
+                ))}
+            </div>
+        </>
     );
 }
 
