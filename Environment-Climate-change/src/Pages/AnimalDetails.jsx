@@ -30,6 +30,9 @@ function AnimalDetails() {
       <h2>{animalDetails.name}</h2>
       <img src={animalDetails.image} alt={animalDetails.name} />
       <p>{animalDetails.status}</p>
+      <Link to={`/editAnimal/${animalDetails.id}`} className="btn btn-outline-secondary">
+        Edit animal sheet
+      </Link>
       <Link to="/animalList">
         <button>Back</button>
       </Link>

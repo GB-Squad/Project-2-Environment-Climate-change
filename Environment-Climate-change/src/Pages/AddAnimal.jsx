@@ -51,7 +51,7 @@ function AddAnimal() {
 
                 axios.post("https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json", newSpecies)
                     .then((response) => {
-                        navigate("/")
+                        navigate(`/animalList`)
                     })
                     .catch(e => {
                         console.log("error", e)
