@@ -29,6 +29,7 @@ function AnimalsList(props) {
                     <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
                         Animal Details
                     </Link>
+                    <button>Delete</button>
                 </div>
             ))}
         </div>

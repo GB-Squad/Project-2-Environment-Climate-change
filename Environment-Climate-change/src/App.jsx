@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} ></Route>
           <Route path="/animalList" element={<AnimalsList callBackDisplayAnimal={DisplayAnimal} />} ></Route>
 
-          <Route path="/animal/:id" element={<AnimalDetails />} />
+          <Route path="/animal/:id" element={<AnimalDetails />} />git 
           <Route path="/addAnimal" element={<AddAnimal />} />
         </Routes>
       </div>
