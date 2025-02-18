@@ -18,9 +18,9 @@ function App() {
       <Navbar />
       <div>
         <Routes>
-          <Route path="/" element={<HomePage />} ></Route>
-          <Route path="/animalList" element={<AnimalsList callBackDisplayAnimal={DisplayAnimal} />} ></Route>
-
+          
+          <Route path="/animalList" element={<AnimalsList callBackDisplayAnimal={DisplayAnimal} callBackSetAnimal={setAnimal} />} ></Route>
+          <Route path="/" element={<HomePage callBackDisplayAnimal={DisplayAnimal}/>} ></Route>
           <Route path="/animal/:id" element={<AnimalDetails />} />
           <Route path="/addAnimal" element={<AddAnimal />} />
         </Routes>

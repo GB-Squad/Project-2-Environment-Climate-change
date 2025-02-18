@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import "../Styles/homepage.css";
 import { Icon } from 'leaflet';
 
-function HomePage() {
+function HomePage(props) {
     const geocodeTest = [13.036272, 10.963980];
     const geoIcon = new Icon({
         iconUrl:"src/assets/icon frog.png",
@@ -14,7 +14,7 @@ function HomePage() {
         <> 
             <div className="KPI-container">
                 <section className="KPI">
-                    <h3>Number of tracked species</h3>
+                    <h3>Number of tracked species: {props.callBackDisplayAnimal.length}</h3>
                 </section>
                 <section className="KPI">
                     <h3>Breakdown per level of vulnerability</h3>
