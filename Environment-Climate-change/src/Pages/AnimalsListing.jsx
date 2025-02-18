@@ -12,7 +12,7 @@ function AnimalsList(props) {
             .then((response) => {
 
                 const animalArray = Object.values(response.data).flat();
-                setAnimal(animalArray);
+                props.callBackSetAnimal(animalArray);
                 console.log(animalArray);
             })
             .catch((error) => {
