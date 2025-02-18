@@ -30,7 +30,7 @@ function AnimalDetails() {
       <h2>{animalDetails.name}</h2>
       <img src={animalDetails.image} alt={animalDetails.name} />
       <p>{animalDetails.status}</p>
-      <Link to="/animalListc">
+      <Link to="/animalList">
         <button>Back</button>
       </Link>
     </div>

@@ -4,6 +4,8 @@ import "../Pages/AnimalsList.css"
 import { Link } from "react-router-dom";
 
 function AnimalsList(props) {
+    const [entries, setEntries] = useState([]);
+
 
     useEffect(() => {
 
@@ -17,8 +19,12 @@ function AnimalsList(props) {
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
-            });
-    }, []); return (<>
+            })
+
+    }, []);
+
+    return (
+    <>
         <div className="items-list">
             {props.callBackDisplayAnimal.map((animal) => (
                 <div className="item" key={animal.id}>
