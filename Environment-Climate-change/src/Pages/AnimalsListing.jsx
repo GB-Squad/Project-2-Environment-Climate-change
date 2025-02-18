@@ -3,9 +3,7 @@ import axios from "axios";
 import "../Pages/AnimalsList.css"
 import { Link } from "react-router-dom";
 
-function AnimalsList() {
-    const [DisplayAnimal, setAnimal] = useState([]);
-
+function AnimalsList(props) {
 
     useEffect(() => {
 
@@ -22,7 +20,7 @@ function AnimalsList() {
             });
     }, []); return (<>
         <div className="items-list">
-            {DisplayAnimal.map((animal) => (
+            {props.callBackDisplayAnimal.map((animal) => (
                 <div className="item" key={animal.id}>
                     <img className="img-display" src={animal.image} alt="animal image" />
                     <h4> Name:{animal.species}</h4>

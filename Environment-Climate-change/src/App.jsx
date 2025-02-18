@@ -9,7 +9,8 @@ import AddAnimal from './Pages/AddAnimal'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [DisplayAnimal, setAnimal] = useState([]);
 
   return (
     <>
@@ -18,7 +19,8 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} ></Route>
-          <Route path="/animalList" element={<AnimalsList />} ></Route>
+          <Route path="/animalList" element={<AnimalsList callBackDisplayAnimal={DisplayAnimal} />} ></Route>
+
           <Route path="/animal/:id" element={<AnimalDetails />} />
           <Route path="/addAnimal" element={<AddAnimal />} />
         </Routes>
