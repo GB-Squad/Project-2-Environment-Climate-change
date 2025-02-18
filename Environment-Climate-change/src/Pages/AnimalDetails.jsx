@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function AnimalDetails() {
   const { id } = useParams();  // Get the animal ID from the URL
@@ -26,10 +27,12 @@ function AnimalDetails() {
 
   return (
     <div>
-      <h2>{animalDetails.common_name}</h2>
-      <img src={animalDetails.image_url} alt={animalDetails.common_name} />
-      <p>{animalDetails.conservation_status.iucn_status}</p>
-      {/* Display other details here */}
+      <h2>{animalDetails.name}</h2>
+      <img src={animalDetails.image} alt={animalDetails.name} />
+      <p>{animalDetails.status}</p>
+      <Link to="/animalListc">
+        <button>Back</button>
+      </Link>
     </div>
   );
 }

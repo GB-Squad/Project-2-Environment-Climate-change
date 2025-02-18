@@ -15,6 +15,7 @@ function AnimalsList() {
 
                 const animalArray = Object.values(response.data).flat();
                 setAnimal(animalArray);
+                console.log(animalArray);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -23,9 +24,10 @@ function AnimalsList() {
         <div className="items-list">
             {DisplayAnimal.map((animal) => (
                 <div className="item" key={animal.id}>
-                    <img className="img-display" src={animal.image_url} alt="animal image" />
-                    <h4><strong>Common Name:</strong>{animal.common_name}</h4>
-                    <h3>Status : {animal.conservation_status.iucn_status}</h3>
+                    <img className="img-display" src={animal.image} alt="animal image" />
+                    <h4> Name:{animal.species}</h4>
+                    <h4>{animal.status}</h4>
+
                     <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
                         Animal Details
                     </Link>

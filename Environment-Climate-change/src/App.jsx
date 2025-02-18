@@ -19,12 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} ></Route>
           <Route path="/animalList" element={<AnimalsList />} ></Route>
-<<<<<<< HEAD
           <Route path="/animal/:id" element={<AnimalDetails />} />
-=======
-          <Route path="/animal/:id" component={AnimalDetails} />
-          <Route path="/addAnimal" element={<AddAnimal/>} />
->>>>>>> 980e41e8679a80fe69afd10f73ff46cefaf48429
+          <Route path="/addAnimal" element={<AddAnimal />} />
         </Routes>
       </div>
     </>
