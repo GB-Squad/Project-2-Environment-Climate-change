@@ -5,6 +5,7 @@ import AnimalsList from './Pages/AnimalsListing' // Fixed import name
 import HomePage from './Pages/HomePage'
 import { Routes, Route } from 'react-router-dom'
 import AnimalDetails from "./Pages/AnimalDetails";
+import AddAnimal from './Pages/AddAnimal'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<HomePage />} ></Route>
           <Route path="/animalList" element={<AnimalsList />} ></Route>
           <Route path="/animal/:id" component={AnimalDetails} />
+          <Route path="/addAnimal" element={<AddAnimal/>} />
         </Routes>
       </div>
     </>
