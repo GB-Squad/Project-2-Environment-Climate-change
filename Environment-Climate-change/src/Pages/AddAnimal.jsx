@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../Styles/addAnimal.css"
 
 function AddAnimal () {
+    const [id, setId] = useState("");
     const [family, setFamily] = useState("");
     const [species, setSpecies] = useState("");
     const [status, setStatus] = useState("");
@@ -13,11 +14,10 @@ function AddAnimal () {
     const [habitats, setHabitats] = useState("");
     const [regions, setRegions] = useState("");
     const [geolocations, setGeolocations] = useState([]);
-    const [id, setId] = useState("");
     const [image, setImage] = useState("");
     const [life_expectancy, setLife_expectancy] = useState("");
-    const [diet_category, setDiet_Category] = useState("");
-    const [characteristics, setCharacteristics] = useState("");
+    const [diet_category, setDiet_category] = useState("");
+    const [animal_description, setAnimal_description] = useState("");
     const [reference, setReference] = useState("");
 
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ function AddAnimal () {
             image: image,
             life_expectancy: life_expectancy,
             diet_category: diet_category,
-            characteristics: characteristics,
+            animal_description: animal_description,
             reference: reference
         }
         
@@ -54,13 +54,12 @@ function AddAnimal () {
         setStatus("");
         setLastAssessed("");
         setPopulation(0);
-        setHabitats("");
         setRegions("");
         setGeolocations("");
         setImage("");
         setLife_expectancy("");
-        setDiet_Category("");
-        setCharacteristics("");
+        setDiet_category("");
+        setAnimal_description("");
         setReference("");
         
     }
@@ -70,6 +69,16 @@ function AddAnimal () {
         <div className="addAnimalFormContainer"> 
             <h3> Track new species </h3>
             <form onSubmit={handleSubmit}>
+            <label>
+                    Species:
+                    <input
+                        type="text"
+                        name="species"
+                        placeholder="enter the species name"
+                        value={species}
+                        onChange={(e) => { setSpecies(e.target.value) }}
+                    />
+                </label>
                 <label>
                     Family:
                     <input
@@ -80,16 +89,7 @@ function AddAnimal () {
                         onChange={(e) => { setFamily(e.target.value) }}
                     />
                 </label>
-                <label>
-                    Species:
-                    <input
-                        type="text"
-                        name="species"
-                        placeholder="enter the species name"
-                        value={species}
-                        onChange={(e) => { setSpecies(e.target.value) }}
-                    />
-                </label>
+
                 <label>
                     Status:
                     <input
@@ -118,16 +118,6 @@ function AddAnimal () {
                         placeholder="enter the number of animals"
                         value={population}
                         onChange={(e) => { setPopulation(e.target.value) }}
-                    />
-                </label>
-                <label>
-                    Habitats:
-                    <input
-                        type="text"
-                        name="habitats"
-                        placeholder="specify habitat type"
-                        value={habitats}
-                        onChange={(e) => { setHabitats(e.target.value) }}
                     />
                 </label>
                 <label>
@@ -181,13 +171,13 @@ function AddAnimal () {
                     />
                 </label>
                 <label>
-                    Characteristics:
+                    Animal description:
                     <input
                         type="text"
-                        name="characteristics"
+                        name="animal_description"
                         placeholder="enter main characteristics of the species"
-                        value={characteristics}
-                        onChange={(e) => { setCharacteristics(e.target.value) }}
+                        value={animal_description}
+                        onChange={(e) => { setAnimal_description(e.target.value) }}
                     />
                 </label>
                 <label>
