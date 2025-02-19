@@ -1,7 +1,7 @@
 .items-list {
     text-align: justify;
     margin-bottom: 30px;
-    padding: 10px;
+    padding: 2px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -9,17 +9,17 @@
 
 .item {
     flex: 0 1 29%;
-    margin: 20px 2%;
-    padding: 10px 2%;
-    border: 2px solid #333;
+    padding: 2px;
+    border: 1px solid #333;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .img-display {
     width: 100%;
-    height: auto;
+    height: 50%;
     position: relative;
 }
-
-.button:hover {
-    color: blueviolet;
+.img-display:hover{
+    transform: scale(0.5);
 }
