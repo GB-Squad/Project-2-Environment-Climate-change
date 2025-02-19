@@ -26,6 +26,8 @@ function HomePage(props) {
         iconUrl:"src/assets/icon frog.png",
         iconSize: [38, 38]
     })
+
+    
         
     return (
         <> 
@@ -53,10 +55,14 @@ function HomePage(props) {
                 attribution= '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg?api_key=5ba27eab-7c1e-480a-b202-79dc8eb15c1a"
             />
-            {props.callBackDisplayAnimal.map((animal) => {
+            {props.callBackDisplayAnimal
+            .filter(animal => animal.geolocation && animal.geolocation.length === 2)
+            .map((animal) => {
+                const [lat, lng] = animal.geolocation
                 return (
                     <Marker 
-                    position={animal.geolocation}
+                    key={animal.id}
+                    position={[lat, lng]}
                     icon={geoIcon}>
                     
                     <Popup> 
