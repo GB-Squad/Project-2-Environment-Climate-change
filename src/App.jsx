@@ -25,7 +25,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/animalList" element={<AnimalsList callBackDisplayAnimal={DisplayAnimal} callBackSetAnimal={setAnimal} />} ></Route>
-          <Route path="/" element={<HomePage callBackDisplayAnimal={DisplayAnimal} />} ></Route>
+          <Route path="/" element={<HomePage callBackDisplayAnimal={DisplayAnimal} callBackSetAnimal={setAnimal}/>} ></Route>
           <Route path="/animal/:id" element={<AnimalDetails />} />
           <Route path="/addAnimal" element={<AddAnimal />} />
           <Route path="/edit/:id" element={<EditAnimal />} />
