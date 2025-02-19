@@ -32,7 +32,7 @@ function AnimalsList(props) {
             .then(() => {
                 console.log(`Animal with id ${id} deleted successfully`);
                 const filteredEntries = entries.filter((animal) => animal.id !== id);
-                setEntries(filteredEntries); // Fix: Update local state
+                setEntries(filteredEntries); 
                 props.callBackSetAnimal(filteredEntries);
             })
             .catch((error) => {
