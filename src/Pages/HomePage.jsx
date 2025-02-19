@@ -59,8 +59,9 @@ function HomePage(props) {
 
     
         
+
     return (
-        <> 
+        <>
             <div className="KPI-container">
                 <section className="KPI">
                     <h3>Number of tracked species: {props.callBackDisplayAnimal.length}</h3>
@@ -109,44 +110,44 @@ function HomePage(props) {
                     
                 </section>
             </div>
-            
-            <MapContainer 
-            className='map-container'
-            center={[13.036272, 10.963980]} 
-            zoom={2}
-            minZoom={2}
-            maxZoom={6}
+
+            <MapContainer
+                className='map-container'
+                center={[13.036272, 10.963980]}
+                zoom={2}
+                minZoom={2}
+                maxZoom={6}
             >
-           
-            <TileLayer
-                attribution= '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg?api_key=5ba27eab-7c1e-480a-b202-79dc8eb15c1a"
-            />
-            {props.callBackDisplayAnimal
-            .filter(animal => animal.geolocation && animal.geolocation.length === 2)
-            .map((animal) => {
-                const [lat, lng] = animal.geolocation
-                return (
-                    <Marker 
-                    key={animal.id}
-                    position={[lat, lng]}
-                    icon={geoIcon}>
-                    
-                    <Popup> 
-                        <p>{animal.species}</p>
-                        <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
-                        More details
-                        </Link>
-                    </Popup>
-                    </Marker>
-                )
-            })}
-           
+
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg?api_key=5ba27eab-7c1e-480a-b202-79dc8eb15c1a"
+                />
+                {props.callBackDisplayAnimal
+                    .filter(animal => animal.geolocation && animal.geolocation.length === 2)
+                    .map((animal) => {
+                        const [lat, lng] = animal.geolocation
+                        return (
+                            <Marker
+                                key={animal.id}
+                                position={[lat, lng]}
+                                icon={geoIcon}>
+
+                                <Popup>
+                                    <p>{animal.species}</p>
+                                    <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
+                                        More details
+                                    </Link>
+                                </Popup>
+                            </Marker>
+                        )
+                    })}
+
 
             </MapContainer>
 
         </>
-        )
+    )
 }
 
 export default HomePage

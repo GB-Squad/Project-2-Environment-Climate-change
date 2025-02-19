@@ -94,7 +94,7 @@ function EditAnimal() {
                     <label>
                         Last Assessment:
                         <input
-                            type="date"
+                            type="text"
                             name="lastAssessed"
                             value={animalData.lastAssessed}
                             onChange={handleChange}
