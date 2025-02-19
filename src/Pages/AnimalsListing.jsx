@@ -32,7 +32,7 @@ function AnimalsList(props) {
             .then(() => {
                 console.log(`Animal with id ${id} deleted successfully`);
                 const filteredEntries = entries.filter((animal) => animal.id !== id);
-                setEntries(filteredEntries); // Fix: Update local state
+                setEntries(filteredEntries);
                 props.callBackSetAnimal(filteredEntries);
             })
             .catch((error) => {
@@ -51,7 +51,9 @@ function AnimalsList(props) {
                         <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
                             Animal Details
                         </Link>
-                        <button onClick={() => handleDelete(animal.id)}>Delete</button>
+                        <div>
+                            <button onClick={() => handleDelete(animal.id)}>Delete</button>
+                        </div>
                     </div>
                 ))}
             </div>
