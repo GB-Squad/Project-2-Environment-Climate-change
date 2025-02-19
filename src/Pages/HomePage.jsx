@@ -34,7 +34,7 @@ function HomePage(props) {
            
             <TileLayer
                 attribution= '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                url="https://tiles.stadiamaps.com/tiles/stamen_terrain_background/{z}/{x}/{y}{r}.png"
+                url="https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png?api_key=5ba27eab-7c1e-480a-b202-79dc8eb15c1a"
             />
             
             <Marker 
