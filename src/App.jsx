@@ -20,7 +20,8 @@ function App() {
 
   return (
     <>
-      <h1> Wildlife Vulnerability Tracker</h1>
+      <h1> Wildlife Watcher</h1>
+      <h3>A collaborative tool for tracking species conservation statuses</h3>
       <Navbar />
       <div>
         <Routes>

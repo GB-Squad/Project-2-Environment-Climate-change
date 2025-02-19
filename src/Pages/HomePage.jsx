@@ -53,7 +53,7 @@ function HomePage(props) {
     const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042", "#8dd1e1"];
 
     const geoIcon = new Icon({
-        iconUrl:"/public/icon frog.png",
+        iconUrl:"/public/icon-frog.png",
         iconSize: [38, 38]
     })
 
