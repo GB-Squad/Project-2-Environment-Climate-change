@@ -27,6 +27,9 @@ function HomePage(props) {
         iconSize: [38, 38]
     })
 
+    
+        
+
     return (
         <>
             <div className="KPI-container">
@@ -53,21 +56,25 @@ function HomePage(props) {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg?api_key=5ba27eab-7c1e-480a-b202-79dc8eb15c1a"
                 />
-                {props.callBackDisplayAnimal.map((animal) => {
-                    return (
-                        <Marker
-                            position={animal.geolocation}
-                            icon={geoIcon}>
+                {props.callBackDisplayAnimal
+                    .filter(animal => animal.geolocation && animal.geolocation.length === 2)
+                    .map((animal) => {
+                        const [lat, lng] = animal.geolocation
+                        return (
+                            <Marker
+                                key={animal.id}
+                                position={[lat, lng]}
+                                icon={geoIcon}>
 
-                            <Popup>
-                                <p>{animal.species}</p>
-                                <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
-                                    More details
-                                </Link>
-                            </Popup>
-                        </Marker>
-                    )
-                })}
+                                <Popup>
+                                    <p>{animal.species}</p>
+                                    <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
+                                        More details
+                                    </Link>
+                                </Popup>
+                            </Marker>
+                        )
+                    })}
 
 
             </MapContainer>
