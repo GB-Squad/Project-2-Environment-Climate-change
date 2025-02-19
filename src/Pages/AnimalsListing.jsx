@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../Pages/AnimalsList.css"
+import "../Pages/AnimalsList.css";
 import { Link } from "react-router-dom";
 
 function AnimalsList(props) {
@@ -10,10 +10,16 @@ function AnimalsList(props) {
         axios
             .get("https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json")
             .then((response) => {
-                const animalArray = Object.values(response.data).flat();
-                setEntries(animalArray);
-                props.callBackSetAnimal(animalArray);
-                console.log(animalArray);
+                if (response.data) {
+                    const animalArray = Object.keys(response.data).map((id) => ({
+                        id,
+                        ...response.data[id],
+                    }));
+
+                    setEntries(animalArray);
+                    props.callBackSetAnimal(animalArray);
+                    console.log(animalArray);
+                }
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -26,7 +32,7 @@ function AnimalsList(props) {
             .then(() => {
                 console.log(`Animal with id ${id} deleted successfully`);
                 const filteredEntries = entries.filter((animal) => animal.id !== id);
-                setEntries(filteredEntries);
+                setEntries(filteredEntries); // Fix: Update local state
                 props.callBackSetAnimal(filteredEntries);
             })
             .catch((error) => {
@@ -39,8 +45,8 @@ function AnimalsList(props) {
             <div className="items-list">
                 {entries.map((animal) => (
                     <div className="item" key={animal.id}>
-                        <img className="img-display" src={animal.image} alt="animal image" />
-                        <h4> Name:{animal.species}</h4>
+                        <img className="img-display" src={animal.image} alt="animal" />
+                        <h4>Name: {animal.species}</h4>
                         <h4>{animal.status}</h4>
                         <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
                             Animal Details

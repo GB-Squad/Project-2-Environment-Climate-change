@@ -10,12 +10,13 @@ function AnimalDetails() {
   useEffect(() => {
     axios
       .get(
-        `https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json`
-      )
+        `https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json`)
       .then((response) => {
-        // Flatten the data and then find the animal by its id
-        const animalArray = Object.values(response.data).flat();
-        const animal = animalArray.find((animal) => animal.id === parseInt(id));
+        const animalArray = Object.keys(response.data).map((key) => ({
+          id: key,
+          ...response.data[key],
+        }));
+        const animal = animalArray.find((animal) => animal.id === id); 
         setAnimalDetails(animal);
       })
       .catch((error) => {
@@ -27,8 +28,8 @@ function AnimalDetails() {
 
   return (
     <div>
-      <h2>{animalDetails.name}</h2>
-      <img src={animalDetails.image} alt={animalDetails.name} />
+      <h2>{animalDetails.species}</h2>  {/* Corrected to access species */}
+      <img src={animalDetails.image} alt={animalDetails.species} />
       <p>{animalDetails.status}</p>
       <Link to={`/edit/${animalDetails.id}`} className="btn btn-outline-secondary">
         Edit animal sheet
