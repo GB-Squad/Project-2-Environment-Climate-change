@@ -132,8 +132,9 @@ function HomePage(props) {
             </PieChart>
                     
                 </section>
+               
             </div>
-
+            <h3>Find species directly on the map</h3>
             <MapContainer
                 className='map-container'
                 center={[13.036272, 10.963980]}
@@ -143,7 +144,7 @@ function HomePage(props) {
             >
 
                 <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    attribution='&copy; <p>Stadia Maps</p>'
                     url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg?api_key=5ba27eab-7c1e-480a-b202-79dc8eb15c1a"
                 />
                 {props.callBackDisplayAnimal
