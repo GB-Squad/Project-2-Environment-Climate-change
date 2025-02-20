@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Styles/EditAnimal.css"
+import "../Styles/EditAnimal.css";
+
 function EditAnimal() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -10,9 +11,9 @@ function EditAnimal() {
         species: "",
         family: "",
         status: "",
-        year_assessed: "",
-        estimated_population: "",
-        geographical_area: "",
+        lastAssessed: "",
+        population: "",
+        regions: "",
         geolocation: "",
         image: "",
         life_expectancy: "",
@@ -45,10 +46,29 @@ function EditAnimal() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const geoArray = animalData.geolocation.split(",").map(coord => parseFloat(coord.trim()));
+        const regionsArray = animalData.regions.split(",").map(region => region.trim());
+
+        const updatedData = {
+            species: animalData.species,
+            family: animalData.family,
+            status: animalData.status,
+            lastAssessed: animalData.lastAssessed,
+            population: animalData.population,
+            regions: regionsArray,
+            geolocation: geoArray,
+            image: animalData.image,
+            life_expectancy: animalData.life_expectancy,
+            diet_category: animalData.diet_category,
+            animal_description: animalData.animal_description,
+            reference_links: animalData.reference_links,
+        };
+
         axios
             .patch(
                 `https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal/${id}.json`,
-                animalData
+                updatedData
             )
             .then(() => navigate("/animalList"))
             .catch((error) => console.error("Error updating data:", error));
@@ -108,8 +128,8 @@ function EditAnimal() {
                         <label>Year Assessed:</label>
                         <input
                             type="text"
-                            name="year_assessed"
-                            value={animalData.year_assessed}
+                            name="lastAssessed"
+                            value={animalData.lastAssessed}
                             onChange={handleChange}
                             className="form-control"
                         />
@@ -119,9 +139,8 @@ function EditAnimal() {
                         <label>Estimated Population:</label>
                         <input
                             type="number"
-                            name="estimated_population"
-                            placeholder="Enter the estimated number of animals"
-                            value={animalData.estimated_population}
+                            name="population"
+                            value={animalData.population}
                             onChange={handleChange}
                             className="form-control"
                         />
@@ -131,9 +150,9 @@ function EditAnimal() {
                         <label>Geographical Area:</label>
                         <input
                             type="text"
-                            name="geographical_area"
+                            name="regions"
                             placeholder="Specify area of living"
-                            value={animalData.geographical_area}
+                            value={animalData.regions}
                             onChange={handleChange}
                             className="form-control"
                         />
