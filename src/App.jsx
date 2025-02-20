@@ -20,8 +20,12 @@ function App() {
 
   return (
     <>
+      <div id="header-container">
+      <img id="logo" src='/public/icon-frog.png'></img>
       <h1>Wildlife Watcher</h1>
+      </div>
       <h3>A collaborative tool for tracking species conservation statuses</h3>
+      
       <Navbar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
       <Routes>
         <Route

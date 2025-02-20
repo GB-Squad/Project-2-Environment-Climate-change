@@ -15,7 +15,8 @@ body {
   background-color: #f0f0f0 !important
 }
 
-h1 {
+#header-container h1 {
+  align-items: center;
   font-size: 3.2em;
   line-height: 1.1;
   text-align: center;
@@ -28,6 +29,7 @@ h1 {
   justify-content: center;
   gap: 14rem;
   padding: 10px 0;
+  margin: 15px 0;
   background-color: #f8f8f8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -49,6 +51,19 @@ h1 {
 #main-navbar a.active {
   font-weight: bold;
   color: rgb(110, 107, 107);
+}
+
+#logo {
+  width: 80px;
+  height: auto;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+#header-container {
+  display: flex;
+  align-items: center;
+  gap: 30px
 }
 
 

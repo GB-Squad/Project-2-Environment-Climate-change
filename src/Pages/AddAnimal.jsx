@@ -79,7 +79,7 @@ function AddAnimal() {
 
     return (
         <div className="addAnimalFormContainer">
-            <h3>Track new species</h3>
+            <h3>Enter information and log a new species!</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Species:</label>
