@@ -22,6 +22,7 @@ h1 {
   max-width: 1200px;  /* Set maximum width */
   margin: 0 auto;     /* Center the container */
   padding: 20px;      /* Add padding inside the container */
+}
 .navbar {
   display: flex;
   align-items: center;
