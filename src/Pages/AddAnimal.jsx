@@ -109,7 +109,7 @@ function AddAnimal() {
                         <option value="Critically Endangered (CR)">Endangered</option>
                         <option value="Endangered (EN)">Vulnerable</option>
                         <option value="Vulnerable">Critically Endangered</option>
-                        {/* Add more status options as needed */}
+                       
                     </select>
                 </label>
 

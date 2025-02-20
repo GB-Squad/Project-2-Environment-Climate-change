@@ -2,8 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 function Navbar() {
     const location = useLocation();
-    const shouldShowSearchBar = location.pathname !== '/'||;
-
+    const shouldShowSearchBar = location.pathname === '/animalList';
 
     return (
         <div className="container">
