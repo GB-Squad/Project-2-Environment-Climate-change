@@ -5,7 +5,7 @@ import { Icon } from 'leaflet';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 
 function HomePage(props) {
@@ -84,10 +84,12 @@ function HomePage(props) {
         <>
             <div className="KPI-container">
                 <section className="KPI">
-                    <h3>Number of tracked species: {props.callBackDisplayAnimal.length}</h3>
+                    <h3>Tracked species: </h3>
+                    <h1>{props.callBackDisplayAnimal.length}</h1>
                 </section>
-                <section className="KPI">
-                    <h3>Breakdown per level of vulnerability</h3>
+                <section className="chart-KPI">
+                    <h3>Breakdown per conservation status</h3>
+                    <ResponsiveContainer width="100%" height={400}>
                     <PieChart width={400} height={400}>
                 <Pie
                     data={statusData}
@@ -106,8 +108,9 @@ function HomePage(props) {
                 <Tooltip />
                 <Legend />
             </PieChart>
+            </ResponsiveContainer>
                 </section>
-                <section className="KPI">
+                <section className="chart-KPI">
                     <h3>Breakdown per species family</h3>
                     <PieChart width={400} height={400}>
                 <Pie

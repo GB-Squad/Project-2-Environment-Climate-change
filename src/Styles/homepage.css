@@ -3,21 +3,39 @@
 .map-container {
     height: 600px;
     width: 100%;
+    margin: 0 auto;
+    max-width:1200px;
     border: 2px solid #000; 
     border-radius: 8px;
+    align-self: center;
 }
 
 .KPI-container {
     display: flex;
+    justify-content: space-evenly;
+    /* Centre verticalement */
     
     
 }
 
 .KPI{
+    align-self: center;
+    height: 50%;
     margin: 20px 2%;
     padding: 10px 2%;
     text-align: center;
-    background-color: #f2eee8;
+    background-color: #ebe7e0;
+    color: rgb(110, 107, 107);
+    border-radius: 100px;
+    justify-content: center;
+
+}
+
+.chart-KPI{
+    margin: 20px 2%;
+    padding: 10px 2%;
+    text-align: center;
+    background-color: #ebe7e0;
     color: rgb(110, 107, 107);
     border-radius: 10px;
     justify-content: center;
