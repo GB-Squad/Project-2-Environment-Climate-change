@@ -71,7 +71,7 @@ function AnimalDetails() {
         )}
 
         <div className="animal-actions">
-          <Link to={`/edit/${animalDetails.key}`}>
+          <Link to={`/edit/${animalDetails.id}`}>
             <button className="btn">Edit Animal Details</button>
           </Link>
           <Link to="/animalList">

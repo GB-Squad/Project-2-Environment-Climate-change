@@ -11,10 +11,10 @@ function EditAnimal() {
         species: "",
         family: "",
         status: "",
-        lastAssessed: "",
-        population: "",
-        regions: "",
-        geolocation: "",
+        year_assessed: "",
+        estimated_population: "",
+        geographical_area: "",
+        geolocation: [],
         image: "",
         life_expectancy: "",
         diet_category: "",
@@ -32,7 +32,20 @@ function EditAnimal() {
                 }));
                 const editDetail = Edit.find((editDetail) => editDetail.id === id);
                 if (editDetail) {
-                    setAnimalData(editDetail);
+                    setAnimalData({
+                        species: editDetail.species,
+                        family: editDetail.family,
+                        status: editDetail.status,
+                        year_assessed: editDetail.year_assessed,
+                        estimated_population: editDetail.estimated_population,
+                        geographical_area: editDetail.geographical_area,
+                        geolocation: editDetail.geolocation,
+                        image: editDetail.image,
+                        life_expectancy: editDetail.life_expectancy,
+                        diet_category: editDetail.diet_category,
+                        animal_description: editDetail.animal_description,
+                        reference_links: editDetail.reference_links,
+                    });
                 }
             })
             .catch((error) => {
@@ -47,17 +60,14 @@ function EditAnimal() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const geoArray = animalData.geolocation.split(",").map(coord => parseFloat(coord.trim()));
-        const regionsArray = animalData.regions.split(",").map(region => region.trim());
-
         const updatedData = {
             species: animalData.species,
             family: animalData.family,
             status: animalData.status,
-            lastAssessed: animalData.lastAssessed,
-            population: animalData.population,
-            regions: regionsArray,
-            geolocation: geoArray,
+            year_assessed: animalData.year_assessed,
+            estimated_population: animalData.estimated_population,
+            geographical_area: animalData.geographical_area,
+            geolocation: animalData.geolocation,
             image: animalData.image,
             life_expectancy: animalData.life_expectancy,
             diet_category: animalData.diet_category,
@@ -128,19 +138,19 @@ function EditAnimal() {
                         <label>Year Assessed:</label>
                         <input
                             type="text"
-                            name="lastAssessed"
-                            value={animalData.lastAssessed}
+                            name="year_assessed"
+                            value={animalData.year_assessed}
                             onChange={handleChange}
                             className="form-control"
                         />
                     </div>
 
                     <div className="form-group">
-                        <label>Estimated Population:</label>
+                        <label>Estimated estimated_population:</label>
                         <input
                             type="number"
-                            name="population"
-                            value={animalData.population}
+                            name="estimated_population"
+                            value={animalData.estimated_population}
                             onChange={handleChange}
                             className="form-control"
                         />
@@ -150,9 +160,9 @@ function EditAnimal() {
                         <label>Geographical Area:</label>
                         <input
                             type="text"
-                            name="regions"
+                            name="geographical_area"
                             placeholder="Specify area of living"
-                            value={animalData.regions}
+                            value={animalData.geographical_area}
                             onChange={handleChange}
                             className="form-control"
                         />
@@ -164,7 +174,7 @@ function EditAnimal() {
                             type="text"
                             name="geolocation"
                             placeholder="Enter geolocation (latitude, longitude)"
-                            value={animalData.geolocation}
+                            value={animalData.geolocation.join(", ")} // Join array as string for display
                             onChange={handleChange}
                             className="form-control"
                         />
