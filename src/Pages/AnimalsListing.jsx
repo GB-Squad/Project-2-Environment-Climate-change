@@ -49,8 +49,10 @@ function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
                     filteredEntries.map((animal) => (
                         <div className="item" key={animal.id}>
                             <img className="img-display" src={animal.image} alt="animal" />
-                            <h4>Name: {animal.species}</h4>
-                            <h4>{animal.status}</h4>
+                            <div>
+                                <h4>{animal.species}</h4>
+                                <h4>{animal.status}</h4>
+                            </div>
                             <div>
                                 <p><strong>Population:</strong> {animal.estimated_population}</p>
                                 <p><strong>Region(s):</strong> {animal.geographical_area}</p>

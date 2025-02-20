@@ -26,14 +26,15 @@
 }
 
 .img-display {
-    width: 100%;
-    height: auto;
+    width: 400px;
+   max-height:290px;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    padding-bottom: 20px;
 }
 
 .img-display:hover {
-    transform: scale(1.1);
+   
     filter: brightness(90%);
 }
 

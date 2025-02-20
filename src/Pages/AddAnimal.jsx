@@ -15,6 +15,8 @@ function AddAnimal() {
     const [life_expectancy, setLifeExpectancy] = useState("");
     const [diet_category, setDietCategory] = useState("");
     const [animal_description, setAnimalDescription] = useState("");
+    const [notable_features, setNotableFeatures] = useState("");
+    const [size, setSize] = useState("");
     const [reference_links, setReferenceLinks] = useState("");
 
     const navigate = useNavigate();
@@ -38,7 +40,11 @@ function AddAnimal() {
             image,
             life_expectancy,
             diet_category,
-            animal_description,
+            animal_description: {
+                description: animal_description,
+                notable_features,
+                size
+            },
             reference_links,
         };
 
@@ -62,6 +68,8 @@ function AddAnimal() {
         setLifeExpectancy("");
         setDietCategory("");
         setAnimalDescription("");
+        setNotableFeatures("");
+        setSize("");
         setReferenceLinks("");
     };
 
@@ -92,7 +100,7 @@ function AddAnimal() {
                         <option value="mammals">mammals</option>
                         <option value="reptiles">reptiles</option>
                         <option value="fish">fish</option>
-                        <option value="Birds">birds</option>
+                        <option value="birds">birds</option>
                     </select>
                 </div>
 
@@ -189,6 +197,25 @@ function AddAnimal() {
                     <textarea
                         value={animal_description}
                         onChange={(e) => setAnimalDescription(e.target.value)}
+                        className="form-control"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Notable Features:</label>
+                    <textarea
+                        value={notable_features}
+                        onChange={(e) => setNotableFeatures(e.target.value)}
+                        className="form-control"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Size:</label>
+                    <input
+                        type="text"
+                        value={size}
+                        onChange={(e) => setSize(e.target.value)}
                         className="form-control"
                     />
                 </div>
