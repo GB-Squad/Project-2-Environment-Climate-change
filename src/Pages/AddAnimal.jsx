@@ -7,15 +7,15 @@ function AddAnimal() {
     const [family, setFamily] = useState("");
     const [species, setSpecies] = useState("");
     const [status, setStatus] = useState("");
-    const [lastAssessed, setLastAssessed] = useState("");
-    const [population, setPopulation] = useState(0);
-    const [regions, setRegions] = useState("");
-    const [geolocations, setGeolocations] = useState([]);
+    const [year_assessed, setYearAssessed] = useState("");
+    const [estimated_population, setEstimatedPopulation] = useState("");
+    const [geographical_area, setGeographicalArea] = useState("");
+    const [geolocation, setGeolocation] = useState("");
     const [image, setImage] = useState("");
-    const [life_expectancy, setLife_expectancy] = useState("");
-    const [diet_category, setDiet_category] = useState("");
-    const [animal_description, setAnimal_description] = useState("");
-    const [reference, setReference] = useState("");
+    const [life_expectancy, setLifeExpectancy] = useState("");
+    const [diet_category, setDietCategory] = useState("");
+    const [animal_description, setAnimalDescription] = useState("");
+    const [reference_links, setReferenceLinks] = useState("");
 
     const navigate = useNavigate();
 
@@ -31,20 +31,20 @@ function AddAnimal() {
             family,
             species,
             status,
-            lastAssessed,
-            population,
-            regions,
-            geolocations,
+            year_assessed,
+            estimated_population,
+            geographical_area: geographical_area.split(","),
+            geolocation: geolocation.split(",").map(Number),
             image,
             life_expectancy,
             diet_category,
             animal_description,
-            reference,
+            reference_links,
         };
 
         axios
             .post("https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json", newSpecies)
-            .then((response) => {
+            .then(() => {
                 navigate(`/animalList`);
             })
             .catch((e) => {
@@ -54,15 +54,15 @@ function AddAnimal() {
         setFamily("");
         setSpecies("");
         setStatus("");
-        setLastAssessed("");
-        setPopulation(0);
-        setRegions("");
-        setGeolocations("");
+        setYearAssessed("");
+        setEstimatedPopulation("");
+        setGeographicalArea("");
+        setGeolocation("");
         setImage("");
-        setLife_expectancy("");
-        setDiet_category("");
-        setAnimal_description("");
-        setReference("");
+        setLifeExpectancy("");
+        setDietCategory("");
+        setAnimalDescription("");
+        setReferenceLinks("");
     };
 
     return (
@@ -73,10 +73,8 @@ function AddAnimal() {
                     <label>Species:</label>
                     <input
                         type="text"
-                        name="species"
-                        placeholder="Enter the species name"
                         value={species}
-                        onChange={(e) => { setSpecies(e.target.value) }}
+                        onChange={(e) => setSpecies(e.target.value)}
                         className="form-control"
                         required
                     />
@@ -85,7 +83,6 @@ function AddAnimal() {
                 <div className="form-group">
                     <label>Family:</label>
                     <select
-                        name="family"
                         value={family}
                         onChange={(e) => setFamily(e.target.value)}
                         className="form-control"
@@ -102,7 +99,6 @@ function AddAnimal() {
                 <div className="form-group">
                     <label>Status:</label>
                     <select
-                        name="status"
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
                         className="form-control"
@@ -116,109 +112,93 @@ function AddAnimal() {
                 </div>
 
                 <div className="form-group">
-                    <label>Last Assessment:</label>
+                    <label>Year Assessed:</label>
                     <input
                         type="text"
-                        name="lastAssessed"
-                        value={lastAssessed}
-                        onChange={(e) => { setLastAssessed(e.target.value) }}
+                        value={year_assessed}
+                        onChange={(e) => setYearAssessed(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Population:</label>
+                    <label>Estimated Population:</label>
                     <input
-                        type="number"
-                        name="population"
-                        placeholder="Enter the number of animals"
-                        value={population}
-                        onChange={(e) => { setPopulation(e.target.value) }}
+                        type="text"
+                        value={estimated_population}
+                        onChange={(e) => setEstimatedPopulation(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Regions:</label>
+                    <label>Geographical Area:</label>
                     <input
                         type="text"
-                        name="regions"
-                        placeholder="Specify area of living"
-                        value={regions}
-                        onChange={(e) => { setRegions(e.target.value) }}
+                        placeholder="Separate areas with commas"
+                        value={geographical_area}
+                        onChange={(e) => setGeographicalArea(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Geolocation:</label>
+                    <label>Geolocation (lat, long):</label>
                     <input
                         type="text"
-                        name="geolocations"
-                        placeholder="Enter geolocation (x, y)"
-                        value={geolocations}
-                        onChange={(e) => { setGeolocations(e.target.value) }}
+                        placeholder="Enter coordinates separated by a comma"
+                        value={geolocation}
+                        onChange={(e) => setGeolocation(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Image:</label>
+                    <label>Image URL:</label>
                     <input
                         type="text"
-                        name="image"
-                        placeholder="Enter image URL"
                         value={image}
-                        onChange={(e) => { setImage(e.target.value) }}
+                        onChange={(e) => setImage(e.target.value)}
                         className="form-control"
                         required
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Life expectancy:</label>
+                    <label>Life Expectancy:</label>
                     <input
                         type="text"
-                        name="life_expectancy"
-                        placeholder="Enter wildlife life expectancy"
                         value={life_expectancy}
-                        onChange={(e) => { setLife_expectancy(e.target.value) }}
+                        onChange={(e) => setLifeExpectancy(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Diet category:</label>
+                    <label>Diet Category:</label>
                     <input
                         type="text"
-                        name="diet_category"
-                        placeholder="Enter species' diet"
                         value={diet_category}
-                        onChange={(e) => { setDiet_category(e.target.value) }}
+                        onChange={(e) => setDietCategory(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Animal description:</label>
-                    <input
-                        type="text"
-                        name="animal_description"
-                        placeholder="Enter main characteristics of the species"
+                    <label>Animal Description:</label>
+                    <textarea
                         value={animal_description}
-                        onChange={(e) => { setAnimal_description(e.target.value) }}
+                        onChange={(e) => setAnimalDescription(e.target.value)}
                         className="form-control"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label>Reference:</label>
+                    <label>Reference Links:</label>
                     <input
                         type="text"
-                        name="reference"
-                        placeholder="Enter reference URL"
-                        value={reference}
-                        onChange={(e) => { setReference(e.target.value) }}
+                        value={reference_links}
+                        onChange={(e) => setReferenceLinks(e.target.value)}
                         className="form-control"
                     />
                 </div>
