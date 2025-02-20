@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Styles/EditAnimal.css"
+import "../Styles/addAnimal.css";
+
 function EditAnimal() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -10,15 +11,15 @@ function EditAnimal() {
         species: "",
         family: "",
         status: "",
-        year_assessed: "",
-        estimated_population: "",
-        geographical_area: "",
-        geolocation: "",
+        lastAssessed: "",
+        population: "",
+        regions: "",
+        geolocations: "",
         image: "",
         life_expectancy: "",
         diet_category: "",
         animal_description: "",
-        reference_links: "",
+        reference: "",
     });
 
     useEffect(() => {
@@ -60,158 +61,126 @@ function EditAnimal() {
             <div className="addAnimalFormContainer">
                 <h3>Edit Animal Sheet</h3>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>Species:</label>
+                    <label>
+                        Species:
                         <input
                             type="text"
                             name="species"
                             placeholder="Enter the species name"
                             value={animalData.species}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Family:</label>
-                        <select
+                    </label>
+                    <label>
+                        Family:
+                        <input
+                            type="text"
                             name="family"
+                            placeholder="Enter the family's species"
                             value={animalData.family}
                             onChange={handleChange}
-                            className="form-control"
-                            required
-                        >
-                            <option value="">Select a family</option>
-                            <option value="mammals">Mammals</option>
-                            <option value="reptiles">Reptiles</option>
-                            <option value="fish">Fish</option>
-                        </select>
-                    </div>
-
-                    <div className="form-group">
-                        <label>Status:</label>
-                        <select
+                        />
+                    </label>
+                    <label>
+                        Status:
+                        <input
+                            type="text"
                             name="status"
+                            placeholder="Enter the species' vulnerability status"
                             value={animalData.status}
                             onChange={handleChange}
-                            className="form-control"
-                            required
-                        >
-                            <option value="">Select a status</option>
-                            <option value="Critically Endangered (CR)">Critically Endangered</option>
-                            <option value="Endangered (EN)">Endangered</option>
-                            <option value="Vulnerable">Vulnerable</option>
-                        </select>
-                    </div>
-
-                    <div className="form-group">
-                        <label>Year Assessed:</label>
+                        />
+                    </label>
+                    <label>
+                        Last Assessment:
                         <input
                             type="text"
-                            name="year_assessed"
-                            value={animalData.year_assessed}
+                            name="lastAssessed"
+                            value={animalData.lastAssessed}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Estimated Population:</label>
+                    </label>
+                    <label>
+                        Population:
                         <input
                             type="number"
-                            name="estimated_population"
-                            placeholder="Enter the estimated number of animals"
-                            value={animalData.estimated_population}
+                            name="population"
+                            placeholder="Enter the number of animals"
+                            value={animalData.population}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Geographical Area:</label>
+                    </label>
+                    <label>
+                        Regions:
                         <input
                             type="text"
-                            name="geographical_area"
+                            name="regions"
                             placeholder="Specify area of living"
-                            value={animalData.geographical_area}
+                            value={animalData.regions}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Geolocation:</label>
+                    </label>
+                    <label>
+                        Geolocation:
                         <input
                             type="text"
-                            name="geolocation"
-                            placeholder="Enter geolocation (latitude, longitude)"
-                            value={animalData.geolocation}
+                            name="geolocations"
+                            placeholder="Enter the geolocation (x, y)"
+                            value={animalData.geolocations}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Image:</label>
+                    </label>
+                    <label>
+                        Image:
                         <input
                             type="text"
                             name="image"
                             placeholder="Enter image URL"
                             value={animalData.image}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Life Expectancy:</label>
+                    </label>
+                    <label>
+                        Life expectancy:
                         <input
                             type="text"
                             name="life_expectancy"
-                            placeholder="Enter wildlife life expectancy"
+                            placeholder="Enter the wildlife expectancy"
                             value={animalData.life_expectancy}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Diet Category:</label>
+                    </label>
+                    <label>
+                        Diet category:
                         <input
                             type="text"
                             name="diet_category"
-                            placeholder="Enter species' diet"
+                            placeholder="Enter the species' diet"
                             value={animalData.diet_category}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Animal Description:</label>
+                    </label>
+                    <label>
+                        Animal description:
                         <input
                             type="text"
                             name="animal_description"
                             placeholder="Enter main characteristics of the species"
                             value={animalData.animal_description}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Reference Links:</label>
+                    </label>
+                    <label>
+                        Reference:
                         <input
                             type="text"
-                            name="reference_links"
+                            name="reference"
                             placeholder="Enter reference URL"
-                            value={animalData.reference_links}
+                            value={animalData.reference}
                             onChange={handleChange}
-                            className="form-control"
                         />
-                    </div>
-
-                    <button type="submit" className="btn-submit">Edit Species</button>
+                    </label>
+                    <button type="submit">Edit Species</button>
                 </form>
             </div>
         </>
