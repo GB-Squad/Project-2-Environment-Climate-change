@@ -5,7 +5,7 @@ import { Icon } from 'leaflet';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 
 function HomePage(props) {
@@ -42,21 +42,40 @@ function HomePage(props) {
                 }));
 
                 setFamilyData(familyFormattedData);
-                setStatusData(statusFormattedData);
-            })
-            
-     
-        })
+                setStatusData(statusFormattedData)
+                                       
+                   
+                })
+            })   
+        
         .catch(e => (console.log("error get request", e)))
     }, [])
 
-    const familyCOLORS = ["#B39EB5", "#82ca9d", "#7BAFD4", "#F5E8D7", "#8dd1e1"];
+
+    function defineIcon (animal) {
+                let iconUrl;
+                if (animal.family === "mammals") {
+                    iconUrl = "./mammals.png";
+                  } else if (animal.family === "Birds") {
+                    iconUrl = "./birds.png";
+                  } else if (animal.family === "reptiles") {
+                    iconUrl = "./reptiles.png";
+                  }
+                  else if (animal.family === "fish") {
+                    iconUrl = "./fish.png";
+                  }
+                  else { iconUrl = "/icon-frog.png"}
+
+                  return new Icon({
+                    iconSize: [38, 38],         
+                    iconUrl:iconUrl,
+                    });
+                }
+
+    const familyCOLORS = ["#B39EB5", "#82ca9d", "#7BAFD4", "#C4BAAC", "#8dd1e1"];
     const statusCOLORS = ["#FFA07A", "#ffc658", "#F4D44D", "#ff8042", "#8dd1e1"];
 
-    const geoIcon = new Icon({
-        iconUrl:"/icon-frog.png",
-        iconSize: [38, 38]
-    })
+   
 
     
         
@@ -65,10 +84,12 @@ function HomePage(props) {
         <>
             <div className="KPI-container">
                 <section className="KPI">
-                    <h3>Number of tracked species: {props.callBackDisplayAnimal.length}</h3>
+                    <h3>Tracked species: </h3>
+                    <h1>{props.callBackDisplayAnimal.length}</h1>
                 </section>
-                <section className="KPI">
-                    <h3>Breakdown per level of vulnerability</h3>
+                <section className="chart-KPI">
+                    <h3>Breakdown per conservation status</h3>
+                    <ResponsiveContainer width="100%" height={400}>
                     <PieChart width={400} height={400}>
                 <Pie
                     data={statusData}
@@ -87,8 +108,9 @@ function HomePage(props) {
                 <Tooltip />
                 <Legend />
             </PieChart>
+            </ResponsiveContainer>
                 </section>
-                <section className="KPI">
+                <section className="chart-KPI">
                     <h3>Breakdown per species family</h3>
                     <PieChart width={400} height={400}>
                 <Pie
@@ -132,7 +154,7 @@ function HomePage(props) {
                             <Marker
                                 key={animal.id}
                                 position={[lat, lng]}
-                                icon={geoIcon}>
+                                icon={defineIcon(animal)}>
 
                                 <Popup>
                                     <p>{animal.species}</p>
