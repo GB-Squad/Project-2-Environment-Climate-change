@@ -1,3 +1,5 @@
+
+
 .map-container {
     height: 600px;
     width: 100%;
@@ -7,11 +9,17 @@
 
 .KPI-container {
     display: flex;
+    
+    
 }
 
 .KPI{
     margin: 20px 2%;
     padding: 10px 2%;
-    border: 2px solid #333;
+    text-align: center;
+    background-color: #f2eee8;
+    color: rgb(110, 107, 107);
+    border-radius: 10px;
+    justify-content: center;
 
 }
