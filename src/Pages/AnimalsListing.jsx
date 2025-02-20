@@ -52,7 +52,13 @@ function AnimalsList(props) {
                             Animal Details
                         </Link>
                         <div>
-                            <button onClick={() => handleDelete(animal.id)}>Delete</button>
+                            <button className="btn btn-outline-secondary" onClick={() => {
+                                if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+                                    handleDelete(animal.id);
+                                }
+                            }}>
+                                Delete
+                            </button>
                         </div>
                     </div>
                 ))}
