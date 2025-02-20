@@ -26,13 +26,31 @@ function EditAnimal() {
         axios
             .get("https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json")
             .then((response) => {
-                const Edit = Object.keys(response.data).map((id) => ({
-                    id,
-                    ...response.data[id],
-                }));
-                const editDetail = Edit.find((editDetail) => editDetail.id === id);
-                if (editDetail) {
-                    setAnimalData(editDetail);
+                const animals = response.data;
+                let editAnimal = null;
+                // Loop through each animal's details to find the animal with the matching id
+                for (const key in animals) {
+                    if (animals[key].id === id) {
+                        editAnimal = { id: key, ...animals[key] };
+                        break;
+                    }
+                }
+                if (editAnimal) {
+                    // Prepopulate the form fields with the data
+                    setAnimalData({
+                        species: editAnimal.species,
+                        family: editAnimal.family,
+                        status: editAnimal.status,
+                        lastAssessed: editAnimal.year_assessed,
+                        population: editAnimal.estimated_population,
+                        regions: editAnimal.geographical_area.join(", "),
+                        geolocations: editAnimal.geolocation.join(", "),
+                        image: editAnimal.image,
+                        life_expectancy: editAnimal.life_expectancy,
+                        diet_category: editAnimal.diet_category,
+                        animal_description: editAnimal.animal_description,
+                        reference: editAnimal.reference_links,
+                    });
                 }
             })
             .catch((error) => {
@@ -70,6 +88,7 @@ function EditAnimal() {
                             value={animalData.species}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -83,11 +102,11 @@ function EditAnimal() {
                             required
                         >
                             <option value="">Select a family</option>
-                            <option value="Felidae">Felidae</option>
-                            <option value="Canidae">Canidae</option>
-                            <option value="Cervidae">Cervidae</option>
-                            <option value="Ursidae">Ursidae</option>
-                            {/* Add more families as needed */}
+                            <option value="mammals">mammals</option>
+                            <option value="reptiles">reptiles</option>
+                            <option value="fish">fish</option>
+
+
                         </select>
                     </div>
 
@@ -104,7 +123,6 @@ function EditAnimal() {
                             <option value="Critically Endangered (CR)">Critically Endangered</option>
                             <option value="Endangered (EN)">Endangered</option>
                             <option value="Vulnerable">Vulnerable</option>
-                            {/* Add more status options as needed */}
                         </select>
                     </div>
 
@@ -116,6 +134,7 @@ function EditAnimal() {
                             value={animalData.lastAssessed}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -128,6 +147,7 @@ function EditAnimal() {
                             value={animalData.population}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -140,6 +160,7 @@ function EditAnimal() {
                             value={animalData.regions}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -152,6 +173,7 @@ function EditAnimal() {
                             value={animalData.geolocations}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -164,6 +186,7 @@ function EditAnimal() {
                             value={animalData.image}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -176,6 +199,7 @@ function EditAnimal() {
                             value={animalData.life_expectancy}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -188,6 +212,7 @@ function EditAnimal() {
                             value={animalData.diet_category}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -200,6 +225,7 @@ function EditAnimal() {
                             value={animalData.animal_description}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
@@ -212,6 +238,7 @@ function EditAnimal() {
                             value={animalData.reference}
                             onChange={handleChange}
                             className="form-control"
+                            required
                         />
                     </div>
 
