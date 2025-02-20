@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
 import AnimalsList from './Pages/AnimalsListing';
 import HomePage from './Pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/addAnimal" element={<AddAnimal />} />
         <Route path="/edit/:id" element={<EditAnimal />} />
       </Routes>
+      <Footer />
     </>
   );
 }
