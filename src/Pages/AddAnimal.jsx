@@ -89,10 +89,10 @@ function AddAnimal() {
                         required
                     >
                         <option value="">Select a family</option>
-                        <option value="Felidae">Felidae</option>
-                        <option value="Canidae">Canidae</option>
-                        <option value="Cervidae">Cervidae</option>
-                        <option value="Ursidae">Ursidae</option>
+                        <option value="mammals">Felidae</option>
+                        <option value="reptiles">Canidae</option>
+                        <option value="fish">Cervidae</option>
+                        <option value="Birds">Ursidae</option>
                         {/* Add more families as needed */}
                     </select>
                 </label>
@@ -106,10 +106,9 @@ function AddAnimal() {
                         required
                     >
                         <option value="">Select a status</option>
-                        <option value="Endangered">Endangered</option>
-                        <option value="Vulnerable">Vulnerable</option>
-                        <option value="Least Concern">Least Concern</option>
-                        <option value="Critically Endangered">Critically Endangered</option>
+                        <option value="Critically Endangered (CR)">Endangered</option>
+                        <option value="Endangered (EN)">Vulnerable</option>
+                        <option value="Vulnerable">Critically Endangered</option>
                         {/* Add more status options as needed */}
                     </select>
                 </label>
