@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./AnimalDetail.css"; // Import the CSS file
+import "./AnimalDetail.css"; 
 
 function AnimalDetails() {
-  const { id } = useParams(); // Get the animal ID from the URL
+  const { id } = useParams(); 
   const [animalDetails, setAnimalDetails] = useState(null);
 
   useEffect(() => {

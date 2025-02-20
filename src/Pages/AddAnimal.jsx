@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../Styles/addAnimal.css";
+import "../Pages/EditAnimal.css";
 
 function AddAnimal() {
     const [family, setFamily] = useState("");
@@ -69,150 +69,159 @@ function AddAnimal() {
         <div className="addAnimalFormContainer">
             <h3>Track new species</h3>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Species:
+                <div className="form-group">
+                    <label>Species:</label>
                     <input
                         type="text"
                         name="species"
-                        placeholder="enter the species name"
+                        placeholder="Enter the species name"
                         value={species}
                         onChange={(e) => { setSpecies(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Family:
+                <div className="form-group">
+                    <label>Family:</label>
                     <select
                         name="family"
                         value={family}
                         onChange={(e) => setFamily(e.target.value)}
+                        className="form-control"
                         required
                     >
                         <option value="">Select a family</option>
-                        <option value="mammals">Felidae</option>
-                        <option value="reptiles">Canidae</option>
-                        <option value="fish">Cervidae</option>
-                        <option value="Birds">Ursidae</option>
-                        {/* Add more families as needed */}
+                        <option value="Felidae">Felidae</option>
+                        <option value="Canidae">Canidae</option>
+                        <option value="Cervidae">Cervidae</option>
+                        <option value="Ursidae">Ursidae</option>
                     </select>
-                </label>
+                </div>
 
-                <label>
-                    Status:
+                <div className="form-group">
+                    <label>Status:</label>
                     <select
                         name="status"
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
+                        className="form-control"
                         required
                     >
                         <option value="">Select a status</option>
-                        <option value="Critically Endangered (CR)">Endangered</option>
-                        <option value="Endangered (EN)">Vulnerable</option>
-                        <option value="Vulnerable">Critically Endangered</option>
-                       
+                        <option value="Critically Endangered (CR)">Critically Endangered</option>
+                        <option value="Endangered (EN)">Endangered</option>
+                        <option value="Vulnerable">Vulnerable</option>
                     </select>
-                </label>
+                </div>
 
-                <label>
-                    Last Assessment:
+                <div className="form-group">
+                    <label>Last Assessment:</label>
                     <input
                         type="date"
                         name="lastAssessed"
-                        placeholder="enter the date of the last status assessment"
                         value={lastAssessed}
                         onChange={(e) => { setLastAssessed(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Population:
+                <div className="form-group">
+                    <label>Population:</label>
                     <input
                         type="number"
                         name="population"
-                        placeholder="enter the number of animals"
+                        placeholder="Enter the number of animals"
                         value={population}
                         onChange={(e) => { setPopulation(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Regions:
+                <div className="form-group">
+                    <label>Regions:</label>
                     <input
                         type="text"
                         name="regions"
-                        placeholder="specify area of living"
+                        placeholder="Specify area of living"
                         value={regions}
                         onChange={(e) => { setRegions(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Geolocation:
+                <div className="form-group">
+                    <label>Geolocation:</label>
                     <input
                         type="text"
                         name="geolocations"
-                        placeholder="enter the geolocation (x, y)"
+                        placeholder="Enter geolocation (x, y)"
                         value={geolocations}
                         onChange={(e) => { setGeolocations(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Image:
+                <div className="form-group">
+                    <label>Image:</label>
                     <input
                         type="text"
                         name="image"
-                        placeholder="enter image URL"
+                        placeholder="Enter image URL"
                         value={image}
                         onChange={(e) => { setImage(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Life expectancy:
+                <div className="form-group">
+                    <label>Life expectancy:</label>
                     <input
                         type="text"
                         name="life_expectancy"
-                        placeholder="enter the wild life expectancy"
+                        placeholder="Enter wildlife life expectancy"
                         value={life_expectancy}
                         onChange={(e) => { setLife_expectancy(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Diet category:
+                <div className="form-group">
+                    <label>Diet category:</label>
                     <input
                         type="text"
                         name="diet_category"
-                        placeholder="enter the species' diet"
+                        placeholder="Enter species' diet"
                         value={diet_category}
                         onChange={(e) => { setDiet_category(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Animal description:
+                <div className="form-group">
+                    <label>Animal description:</label>
                     <input
                         type="text"
                         name="animal_description"
-                        placeholder="enter main characteristics of the species"
+                        placeholder="Enter main characteristics of the species"
                         value={animal_description}
                         onChange={(e) => { setAnimal_description(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <label>
-                    Reference:
+                <div className="form-group">
+                    <label>Reference:</label>
                     <input
                         type="text"
                         name="reference"
-                        placeholder="enter reference URL"
+                        placeholder="Enter reference URL"
                         value={reference}
                         onChange={(e) => { setReference(e.target.value) }}
+                        className="form-control"
                     />
-                </label>
+                </div>
 
-                <button type="submit">Add new species</button>
+                <button type="submit" className="btn-submit">Add New Species</button>
             </form>
         </div>
     );

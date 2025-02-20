@@ -1,6 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ searchTerm, onSearchChange }) {
     const location = useLocation();
     const shouldShowSearchBar = location.pathname === '/animalList';
 
@@ -17,6 +17,8 @@ function Navbar() {
                             type="search"
                             placeholder="Search"
                             aria-label="Search"
+                            value={searchTerm}
+                            onChange={(e) => onSearchChange(e.target.value)}
                         />
                         <button className="btn btn-outline-success" type="submit">
                             Search
