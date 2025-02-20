@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../Styles/AnimalsList.css";
+import "./EditAnimal.css";
 
 function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
     const [entries, setEntries] = useState([]);
@@ -53,7 +53,10 @@ function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
                             <h4>{animal.status}</h4>
                             <div>
                                 <p><strong>Population:</strong> {animal.estimated_population}</p>
-                                <p><strong>Region(s):</strong> {animal.geographical_area}</p>
+                                <p><strong>Region(s):</strong></p>
+                                {animal.geographical_area.map((region, index) => (
+                                    <p key={index}>{region}</p>
+                                ))}
                                 <p><strong>Life Expectancy:</strong> {animal.life_expectancy}</p>
                             </div>
                             <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
@@ -62,8 +65,7 @@ function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
                             <div>
                                 <button onClick={() => {
                                     if (window.confirm("Are you sure you want to delete this element?")) {
-
-                                        handleDelete(animal.id)
+                                        handleDelete(animal.id);
                                     }
                                 }}>
                                     Delete

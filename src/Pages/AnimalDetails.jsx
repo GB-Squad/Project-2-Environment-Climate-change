@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./AnimalDetail.css"; 
+import "./Styles/AnimalDetail.css";
 
 function AnimalDetails() {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [animalDetails, setAnimalDetails] = useState(null);
 
   useEffect(() => {
@@ -30,12 +30,12 @@ function AnimalDetails() {
 
   return (
     <div className="animal-details-container">
-     
+
       <div className="animal-image-banner">
         <img src={animalDetails.image} alt={animalDetails.species} />
       </div>
 
-      
+
       <div className="animal-info">
         <h2 className="animal-name">{animalDetails.species}</h2>
 
@@ -50,20 +50,20 @@ function AnimalDetails() {
           <p><strong>Year Assessed:</strong> {animalDetails.year_assessed}</p>
         </div>
 
-     
+
         <div className="animal-description">
           <h3>Description:</h3>
           <p>{animalDetails.animal_description}</p>
         </div>
 
-  
+
         <div className="animal-links">
           <a href={animalDetails.reference_links} target="_blank" rel="noopener noreferrer">
             Learn More
           </a>
         </div>
 
-        
+
         <div className="animal-actions">
           <Link to={`/edit/${animalDetails.id}`}>
             <button className="btn">Edit Animal Details</button>
