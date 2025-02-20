@@ -17,11 +17,13 @@ function AnimalDetails() {
       )
       .then((response) => {
         if (response.data) {
-          const animalArray = Object.keys(response.data).map((key) => ({
+          const animalArray = Object.entries(response.data).map(([key, value]) => ({
             id: key,
-            ...response.data[key],
+            ...response.data[key]
           }));
-          const animal = animalArray.find((animal) => animal.id.trim() === id.trim());
+
+          const animal = animalArray.find((animal) => animal.id === id);
+
           setAnimalDetails(animal);
         }
         setLoading(false);
@@ -69,7 +71,7 @@ function AnimalDetails() {
         )}
 
         <div className="animal-actions">
-          <Link to={`/edit/${animalDetails.id}`}>
+          <Link to={`/edit/${animalDetails.key}`}>
             <button className="btn">Edit Animal Details</button>
           </Link>
           <Link to="/animalList">
