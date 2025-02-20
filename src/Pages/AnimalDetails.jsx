@@ -17,11 +17,13 @@ function AnimalDetails() {
       )
       .then((response) => {
         if (response.data) {
-          const animalArray = Object.keys(response.data).map((key) => ({
+          const animalArray = Object.entries(response.data).map(([key, value]) => ({
             id: key,
-            ...response.data[key],
+            ...response.data[key]
           }));
-          const animal = animalArray.find((animal) => animal.id.trim() === id.trim());
+
+          const animal = animalArray.find((animal) => animal.id === id);
+
           setAnimalDetails(animal);
         }
         setLoading(false);

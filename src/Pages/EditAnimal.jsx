@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Styles/EditAnimal.css"
+import "../Styles/EditAnimal.css";
+
 function EditAnimal() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function EditAnimal() {
         year_assessed: "",
         estimated_population: "",
         geographical_area: "",
-        geolocation: "",
+        geolocation: [],
         image: "",
         life_expectancy: "",
         diet_category: "",
@@ -31,7 +32,20 @@ function EditAnimal() {
                 }));
                 const editDetail = Edit.find((editDetail) => editDetail.id === id);
                 if (editDetail) {
-                    setAnimalData(editDetail);
+                    setAnimalData({
+                        species: editDetail.species,
+                        family: editDetail.family,
+                        status: editDetail.status,
+                        year_assessed: editDetail.year_assessed,
+                        estimated_population: editDetail.estimated_population,
+                        geographical_area: editDetail.geographical_area,
+                        geolocation: editDetail.geolocation,
+                        image: editDetail.image,
+                        life_expectancy: editDetail.life_expectancy,
+                        diet_category: editDetail.diet_category,
+                        animal_description: editDetail.animal_description,
+                        reference_links: editDetail.reference_links,
+                    });
                 }
             })
             .catch((error) => {
@@ -45,10 +59,26 @@ function EditAnimal() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const updatedData = {
+            species: animalData.species,
+            family: animalData.family,
+            status: animalData.status,
+            year_assessed: animalData.year_assessed,
+            estimated_population: animalData.estimated_population,
+            geographical_area: animalData.geographical_area,
+            geolocation: animalData.geolocation,
+            image: animalData.image,
+            life_expectancy: animalData.life_expectancy,
+            diet_category: animalData.diet_category,
+            animal_description: animalData.animal_description,
+            reference_links: animalData.reference_links,
+        };
+
         axios
             .patch(
                 `https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal/${id}.json`,
-                animalData
+                updatedData
             )
             .then(() => navigate("/animalList"))
             .catch((error) => console.error("Error updating data:", error));
@@ -116,11 +146,10 @@ function EditAnimal() {
                     </div>
 
                     <div className="form-group">
-                        <label>Estimated Population:</label>
+                        <label>Estimated estimated_population:</label>
                         <input
                             type="number"
                             name="estimated_population"
-                            placeholder="Enter the estimated number of animals"
                             value={animalData.estimated_population}
                             onChange={handleChange}
                             className="form-control"
@@ -145,7 +174,7 @@ function EditAnimal() {
                             type="text"
                             name="geolocation"
                             placeholder="Enter geolocation (latitude, longitude)"
-                            value={animalData.geolocation}
+                            value={animalData.geolocation.join(", ")} // Join array as string for display
                             onChange={handleChange}
                             className="form-control"
                         />

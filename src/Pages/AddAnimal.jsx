@@ -24,27 +24,30 @@ function AddAnimal() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Check for mandatory fields
         if (!family || !status) {
             alert("Family and Status are mandatory fields.");
             return;
         }
 
+        // Format geolocation and geographical_area as arrays
+        const geoArray = geolocation.split(",").map(coord => parseFloat(coord.trim()));
+        const geoAreaArray = geographical_area.split(",").map(area => area.trim());
+
         const newSpecies = {
-            family,
             species,
+            family,
             status,
-            year_assessed,
-            estimated_population,
-            geographical_area: geographical_area.split(","),
-            geolocation: geolocation.split(",").map(Number),
+            lastAssessed: year_assessed, // Corrected field name from `year_assessed` to `lastAssessed`
+            population: estimated_population,
+            regions: geoAreaArray, // Corrected field name for geographical areas
+            geolocations: geoArray, // Corrected field name for geolocation
             image,
             life_expectancy,
             diet_category,
-            animal_description: {
-                description: animal_description,
-                notable_features,
-                size
-            },
+            animal_description,
+            notable_features,
+            size,
             reference_links,
         };
 
@@ -57,6 +60,7 @@ function AddAnimal() {
                 console.log("Error posting new species:", e);
             });
 
+        // Reset the form fields after submission
         setFamily("");
         setSpecies("");
         setStatus("");
