@@ -3,8 +3,13 @@ import axios from "axios";
 import "../Pages/AnimalsList.css";
 import { Link } from "react-router-dom";
 
-function AnimalsList(props) {
+function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
     const [entries, setEntries] = useState([]);
+
+    const filteredEntries = entries.filter((animal) =>
+        animal.species.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        animal.status.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     useEffect(() => {
         axios
@@ -15,10 +20,8 @@ function AnimalsList(props) {
                         id,
                         ...response.data[id],
                     }));
-
                     setEntries(animalArray);
-                    props.callBackSetAnimal(animalArray);
-                    console.log(animalArray);
+                    callBackSetAnimal(animalArray);
                 }
             })
             .catch((error) => {
@@ -30,10 +33,9 @@ function AnimalsList(props) {
         axios
             .delete(`https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal/${id}.json`)
             .then(() => {
-                console.log(`Animal with id ${id} deleted successfully`);
-                const filteredEntries = entries.filter((animal) => animal.id !== id);
-                setEntries(filteredEntries);
-                props.callBackSetAnimal(filteredEntries);
+                const updatedEntries = entries.filter((animal) => animal.id !== id);
+                setEntries(updatedEntries);
+                callBackSetAnimal(updatedEntries);
             })
             .catch((error) => {
                 console.error("Error deleting animal:", error);
@@ -43,19 +45,23 @@ function AnimalsList(props) {
     return (
         <>
             <div className="items-list">
-                {entries.map((animal) => (
-                    <div className="item" key={animal.id}>
-                        <img className="img-display" src={animal.image} alt="animal" />
-                        <h4>Name: {animal.species}</h4>
-                        <h4>{animal.status}</h4>
-                        <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
-                            Animal Details
-                        </Link>
-                        <div>
-                            <button onClick={() => handleDelete(animal.id)}>Delete</button>
+                {filteredEntries.length > 0 ? (
+                    filteredEntries.map((animal) => (
+                        <div className="item" key={animal.id}>
+                            <img className="img-display" src={animal.image} alt="animal" />
+                            <h4>Name: {animal.species}</h4>
+                            <h4>{animal.status}</h4>
+                            <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
+                                Animal Details
+                            </Link>
+                            <div>
+                                <button onClick={() => handleDelete(animal.id)}>Delete</button>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                ) : (
+                    <p>No animals found matching the search criteria</p>
+                )}
             </div>
         </>
     );
