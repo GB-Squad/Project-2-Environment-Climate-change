@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Pages/EditAnimal.css";
+import "../Styles/EditAnimal.css";
 
 function EditAnimal() {
     const { id } = useParams();

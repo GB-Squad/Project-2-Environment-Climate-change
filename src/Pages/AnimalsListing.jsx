@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../Pages/AnimalsList.css";
+import "../Styles/AnimalsList.css";
 
 function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
     const [entries, setEntries] = useState([]);
@@ -61,12 +61,13 @@ function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
                             </Link>
                             <div>
                                 <button onClick={() => {
-                                     if (window.confirm("Are you sure you want to delete this element?")) {
-                                        
-                                    handleDelete(animal.id)}
-                                    }}>
-                                        Delete
-                                        </button>
+                                    if (window.confirm("Are you sure you want to delete this element?")) {
+
+                                        handleDelete(animal.id)
+                                    }
+                                }}>
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     ))
