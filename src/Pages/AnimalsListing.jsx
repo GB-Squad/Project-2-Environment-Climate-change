@@ -55,7 +55,13 @@ function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
                                 Animal Details
                             </Link>
                             <div>
-                                <button onClick={() => handleDelete(animal.id)}>Delete</button>
+                                <button onClick={() => {
+                                     if (window.confirm("Are you sure you want to delete this element?")) {
+                                        
+                                    handleDelete(animal.id)}
+                                    }}>
+                                        Delete
+                                        </button>
                             </div>
                         </div>
                     ))
