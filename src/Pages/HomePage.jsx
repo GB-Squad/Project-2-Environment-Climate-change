@@ -50,7 +50,8 @@ function HomePage(props) {
         .catch(e => (console.log("error get request", e)))
     }, [])
 
-    const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042", "#8dd1e1"];
+    const familyCOLORS = ["#B39EB5", "#82ca9d", "#7BAFD4", "#F5E8D7", "#8dd1e1"];
+    const statusCOLORS = ["#FFA07A", "#ffc658", "#F4D44D", "#ff8042", "#8dd1e1"];
 
     const geoIcon = new Icon({
         iconUrl:"/icon-frog.png",
@@ -80,7 +81,7 @@ function HomePage(props) {
                     label
                 >
                     {statusData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${index}`} fill={statusCOLORS[index % statusCOLORS.length]} />
                     ))}
                 </Pie>
                 <Tooltip />
@@ -101,7 +102,7 @@ function HomePage(props) {
                     label
                 >
                     {familyData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${index}`} fill={familyCOLORS[index % familyCOLORS.length]} />
                     ))}
                 </Pie>
                 <Tooltip />
