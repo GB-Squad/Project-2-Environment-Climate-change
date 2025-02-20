@@ -110,8 +110,9 @@ function HomePage(props) {
             </PieChart>
             </ResponsiveContainer>
                 </section>
-                <section className="chart-KPI">
+                <section className="chart-KPI">              
                     <h3>Breakdown per species family</h3>
+                    <ResponsiveContainer width="100%" height={400}>
                     <PieChart width={400} height={400}>
                 <Pie
                     data={familyData}
@@ -130,6 +131,7 @@ function HomePage(props) {
                 <Tooltip />
                 <Legend />
             </PieChart>
+            </ResponsiveContainer>
                     
                 </section>
                

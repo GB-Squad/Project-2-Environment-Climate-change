@@ -6,9 +6,9 @@ function Navbar({ searchTerm, onSearchChange }) {
 
     return (
         <div className="container">
-            <nav className="navbar bg-body-tertiary">
-                <NavLink to="/">Home</NavLink> |
-                <NavLink to="/animalList">Animal List</NavLink> |
+            <nav className="navbar">
+                <NavLink to="/">Home</NavLink> 
+                <NavLink to="/animalList">Animal List</NavLink> 
                 <NavLink to="/addAnimal">Add a new animal</NavLink>
 
                 {shouldShowSearchBar && (
