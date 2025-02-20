@@ -22,7 +22,11 @@ function AddAnimal() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Create the new animal object
+        if (!family || !status) {
+            alert("Family and Status are mandatory fields.");
+            return;
+        }
+
         const newSpecies = {
             family,
             species,
@@ -38,18 +42,15 @@ function AddAnimal() {
             reference,
         };
 
-        // Make the POST request to save the new species
         axios
             .post("https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json", newSpecies)
             .then((response) => {
-                // Redirect to the animal list after successful submission
                 navigate(`/animalList`);
             })
             .catch((e) => {
                 console.log("Error posting new species:", e);
             });
 
-        // Clear the form fields after submitting
         setFamily("");
         setSpecies("");
         setStatus("");
@@ -78,27 +79,41 @@ function AddAnimal() {
                         onChange={(e) => { setSpecies(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Family:
-                    <input
-                        type="text"
+                    <select
                         name="family"
-                        placeholder="enter the family's species"
                         value={family}
-                        onChange={(e) => { setFamily(e.target.value) }}
-                    />
+                        onChange={(e) => setFamily(e.target.value)}
+                        required
+                    >
+                        <option value="">Select a family</option>
+                        <option value="Felidae">Felidae</option>
+                        <option value="Canidae">Canidae</option>
+                        <option value="Cervidae">Cervidae</option>
+                        <option value="Ursidae">Ursidae</option>
+                        {/* Add more families as needed */}
+                    </select>
                 </label>
 
                 <label>
                     Status:
-                    <input
-                        type="text"
+                    <select
                         name="status"
-                        placeholder="enter the species' vulnerability status"
                         value={status}
-                        onChange={(e) => { setStatus(e.target.value) }}
-                    />
+                        onChange={(e) => setStatus(e.target.value)}
+                        required
+                    >
+                        <option value="">Select a status</option>
+                        <option value="Endangered">Endangered</option>
+                        <option value="Vulnerable">Vulnerable</option>
+                        <option value="Least Concern">Least Concern</option>
+                        <option value="Critically Endangered">Critically Endangered</option>
+                        {/* Add more status options as needed */}
+                    </select>
                 </label>
+
                 <label>
                     Last Assessment:
                     <input
@@ -109,6 +124,7 @@ function AddAnimal() {
                         onChange={(e) => { setLastAssessed(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Population:
                     <input
@@ -119,6 +135,7 @@ function AddAnimal() {
                         onChange={(e) => { setPopulation(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Regions:
                     <input
@@ -129,6 +146,7 @@ function AddAnimal() {
                         onChange={(e) => { setRegions(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Geolocation:
                     <input
@@ -139,6 +157,7 @@ function AddAnimal() {
                         onChange={(e) => { setGeolocations(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Image:
                     <input
@@ -149,6 +168,7 @@ function AddAnimal() {
                         onChange={(e) => { setImage(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Life expectancy:
                     <input
@@ -159,6 +179,7 @@ function AddAnimal() {
                         onChange={(e) => { setLife_expectancy(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Diet category:
                     <input
@@ -169,6 +190,7 @@ function AddAnimal() {
                         onChange={(e) => { setDiet_category(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Animal description:
                     <input
@@ -179,6 +201,7 @@ function AddAnimal() {
                         onChange={(e) => { setAnimal_description(e.target.value) }}
                     />
                 </label>
+
                 <label>
                     Reference:
                     <input
@@ -189,6 +212,7 @@ function AddAnimal() {
                         onChange={(e) => { setReference(e.target.value) }}
                     />
                 </label>
+
                 <button type="submit">Add new species</button>
             </form>
         </div>
