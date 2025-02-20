@@ -95,6 +95,7 @@ function AddAnimal() {
                         <option value="mammals">mammals</option>
                         <option value="reptiles">reptiles</option>
                         <option value="fish">fish</option>
+                        <option value="Birds">birds</option>
                     </select>
                 </div>
 
