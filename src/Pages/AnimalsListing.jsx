@@ -62,25 +62,6 @@ function AnimalsList({ searchTerm, callBackDisplayAnimal, callBackSetAnimal }) {
                 ) : (
                     <p>No animals found matching the search criteria</p>
                 )}
-                {entries.map((animal) => (
-                    <div className="item" key={animal.id}>
-                        <img className="img-display" src={animal.image} alt="animal" />
-                        <h4>Name: {animal.species}</h4>
-                        <h4>{animal.status}</h4>
-                        <Link to={`/animal/${animal.id}`} className="btn btn-outline-secondary">
-                            Animal Details
-                        </Link>
-                        <div>
-                            <button className="btn btn-outline-secondary" onClick={() => {
-                                if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
-                                    handleDelete(animal.id);
-                                }
-                            }}>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                ))}
             </div>
         </>
     );
