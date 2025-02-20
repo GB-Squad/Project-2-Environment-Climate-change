@@ -78,6 +78,7 @@ function AddAnimal() {
                         value={species}
                         onChange={(e) => { setSpecies(e.target.value) }}
                         className="form-control"
+                        required
                     />
                 </div>
 
@@ -91,10 +92,9 @@ function AddAnimal() {
                         required
                     >
                         <option value="">Select a family</option>
-                        <option value="Felidae">Felidae</option>
-                        <option value="Canidae">Canidae</option>
-                        <option value="Cervidae">Cervidae</option>
-                        <option value="Ursidae">Ursidae</option>
+                        <option value="mammals">mammals</option>
+                        <option value="reptiles">reptiles</option>
+                        <option value="fish">fish</option>
                     </select>
                 </div>
 
@@ -117,7 +117,7 @@ function AddAnimal() {
                 <div className="form-group">
                     <label>Last Assessment:</label>
                     <input
-                        type="date"
+                        type="text"
                         name="lastAssessed"
                         value={lastAssessed}
                         onChange={(e) => { setLastAssessed(e.target.value) }}
@@ -170,6 +170,7 @@ function AddAnimal() {
                         value={image}
                         onChange={(e) => { setImage(e.target.value) }}
                         className="form-control"
+                        required
                     />
                 </div>
 

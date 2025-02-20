@@ -20,13 +20,11 @@ function Navbar({ searchTerm, onSearchChange }) {
                             value={searchTerm}
                             onChange={(e) => onSearchChange(e.target.value)}
                         />
-                        <button className="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
+
                     </form>
                 )}
             </nav>
-        </div>
+        </div >
     );
 }
 
