@@ -99,7 +99,7 @@ function EditAnimal() {
                             className="form-control"
                             required
                         >
-                            <option value="">Select a family</option>
+                            <option value="Birds">Birds</option>
                             <option value="mammals">Mammals</option>
                             <option value="reptiles">Reptiles</option>
                             <option value="fish">Fish</option>
