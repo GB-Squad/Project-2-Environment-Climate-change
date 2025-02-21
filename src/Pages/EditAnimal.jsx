@@ -68,7 +68,7 @@ function EditAnimal() {
                 `https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal/${id}.json`,
                 updatedData
             )
-            .then(() => navigate("/animalList"))
+            .then(() => navigate(`/animal/${id}`))
             .catch((error) => console.error("Error updating data:", error));
     };
 
