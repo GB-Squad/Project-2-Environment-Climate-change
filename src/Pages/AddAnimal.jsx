@@ -69,6 +69,7 @@ const AddAnimal = () => {
     };
 
     return (
+        <>
         <div className="addAnimalFormContainer">
             <h3>Enter information and log a new species!</h3>
             <form onSubmit={handleSubmit}>
