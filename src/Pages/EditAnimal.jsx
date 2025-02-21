@@ -26,31 +26,32 @@ function EditAnimal() {
         axios
             .get("https://environmentalchanges-5f276-default-rtdb.europe-west1.firebasedatabase.app/animal.json")
             .then((response) => {
-                const Edit = Object.keys(response.data).map((id) => ({
-                    id,
-                    ...response.data[id],
-                }));
-                const editDetail = Edit.find((editDetail) => editDetail.id === id);
-                if (editDetail) {
-                    setAnimalData({
-                        species: editDetail.species,
-                        family: editDetail.family,
-                        status: editDetail.status,
-                        year_assessed: editDetail.year_assessed,
-                        estimated_population: editDetail.estimated_population,
-                        geographical_area: editDetail.geographical_area,
-                        geolocation: editDetail.geolocation,
-                        image: editDetail.image,
-                        life_expectancy: editDetail.life_expectancy,
-                        diet_category: editDetail.diet_category,
-                        animal_description: editDetail.animal_description,
-                        reference_links: editDetail.reference_links,
-                    });
+                if (response.data) {
+                    const animals = Object.entries(response.data).map(([key, value]) => ({
+                        id: key,
+                        ...value,
+                    }));
+
+                    const editDetail = animals.find((animal) => animal.id === id);
+                    if (editDetail) {
+                        setAnimalData({
+                            species: editDetail.species || "",
+                            family: editDetail.family || "",
+                            status: editDetail.status || "",
+                            year_assessed: editDetail.year_assessed || "",
+                            estimated_population: editDetail.estimated_population || "",
+                            geographical_area: editDetail.geographical_area || "",
+                            geolocation: editDetail.geolocation || [],
+                            image: editDetail.image || "",
+                            life_expectancy: editDetail.life_expectancy || "",
+                            diet_category: editDetail.diet_category || "",
+                            animal_description: editDetail.animal_description || "",
+                            reference_links: editDetail.reference_links || "",
+                        });
+                    }
                 }
             })
-            .catch((error) => {
-                console.error("Error fetching animal details:", error);
-            });
+            .catch((error) => console.error("Error fetching animal details:", error));
     }, [id]);
 
     const handleChange = (e) => {
@@ -60,20 +61,7 @@ function EditAnimal() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const updatedData = {
-            species: animalData.species,
-            family: animalData.family,
-            status: animalData.status,
-            year_assessed: animalData.year_assessed,
-            estimated_population: animalData.estimated_population,
-            geographical_area: animalData.geographical_area,
-            geolocation: animalData.geolocation,
-            image: animalData.image,
-            life_expectancy: animalData.life_expectancy,
-            diet_category: animalData.diet_category,
-            animal_description: animalData.animal_description,
-            reference_links: animalData.reference_links,
-        };
+        const updatedData = { ...animalData };
 
         axios
             .patch(
@@ -146,7 +134,7 @@ function EditAnimal() {
                     </div>
 
                     <div className="form-group">
-                        <label>Estimated estimated_population:</label>
+                        <label>Estimated Population:</label>
                         <input
                             type="number"
                             name="estimated_population"
@@ -174,7 +162,7 @@ function EditAnimal() {
                             type="text"
                             name="geolocation"
                             placeholder="Enter geolocation (latitude, longitude)"
-                            value={animalData.geolocation.join(", ")} // Join array as string for display
+                            value={animalData.geolocation}
                             onChange={handleChange}
                             className="form-control"
                         />
