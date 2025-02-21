@@ -69,20 +69,19 @@ const AddAnimal = () => {
     };
 
     return (
-        <>
-            <h3>Add Animal</h3>
-            <div className="addAnimalFormContainer">
-                <h3>Add Animal Sheet</h3>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            value={species}
-                            onChange={(e) => setSpecies(e.target.value)}
-                            placeholder="Species"
-                            required
-                        />
-                    </div>
+        <div className="addAnimalFormContainer">
+            <h3>Enter information and log a new species!</h3>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Species:</label>
+                    <input
+                        type="text"
+                        value={species}
+                        onChange={(e) => setSpecies(e.target.value)}
+                        className="form-control"
+                        required
+                    />
+                </div>
 
 
                     <div className="form-group">

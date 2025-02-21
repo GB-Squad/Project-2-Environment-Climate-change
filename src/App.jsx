@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import './index.css'
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import AnimalsList from './Pages/AnimalsListing';
@@ -19,8 +20,12 @@ function App() {
 
   return (
     <>
+      <div id="header-container">
+      <img id="logo" src='/icon-frog.png'></img>
       <h1>Wildlife Watcher</h1>
+      </div>
       <h3>A collaborative tool for tracking species conservation statuses</h3>
+      
       <Navbar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
       <Routes>
         <Route

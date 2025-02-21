@@ -3,89 +3,100 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   
 }
 
 body {
   margin: 0;
+  padding: 0;
   height: 100%;
+  width: 100%;
   background-color: #f0f0f0 !important
 }
 
-h1 {
+#header-container h1 {
+  align-items: center;
   font-size: 3.2em;
   line-height: 1.1;
   text-align: center;
 }
 
-.container {
+#main-navbar {
   width: 100%;
-  margin: 0 auto;     /* Center the container */
-  padding: 20px;      /* Add padding inside the container */
-}
-.navbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1rem 2rem;
+  flex-direction: row;
+  justify-content: center;
+  gap: 14rem;
+  padding: 10px 0;
+  margin: 15px 0;
   background-color: #f8f8f8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
 
-.navbar a {
+#main-navbar a {
   text-decoration: none;
   color: rgb(110, 107, 107);
   padding: 0.5rem 1rem;
   transition: color 0.3s, background-color 0.3s;
 }
 
-.navbar a:hover {
+#main-navbar a:hover {
   color: rgb(110, 107, 107);
   font-weight: bold;
   transition: all 0.1s ease;
 }
 
-.navbar a.active {
+#main-navbar a.active {
   font-weight: bold;
   color: rgb(110, 107, 107);
+}
+
+#logo {
+  width: 80px;
+  height: auto;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+#header-container {
+  display: flex;
+  align-items: center;
+  gap: 30px
 }
 
 
 @media (max-width: 750px) {
 
-.container {
-  width: 100%;
-  margin: 0 auto;     /* Center the container */
-  padding: 20px;      /* Add padding inside the container */
-}
-
-  .navbar {
+  #main-navbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 0rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    width: 100%;
     background-color: #f8f8f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
   }
-  
-  .navbar a {
+
+   
+  #main-navbar a {
     text-decoration: none;
     color: rgb(110, 107, 107);
     padding: 0.5rem 1rem;
     transition: color 0.3s, background-color 0.3s;
   }
   
-  .navbar a:hover {
+  #main-navbar a:hover {
     color: rgb(110, 107, 107);
     font-weight: bold;
   }
   
-  .navbar a.active {
+  #main-navbar a.active {
     font-weight: bold;
     color: rgb(110, 107, 107);
   }

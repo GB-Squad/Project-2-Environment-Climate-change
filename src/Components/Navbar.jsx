@@ -5,11 +5,11 @@ function Navbar({ searchTerm, onSearchChange }) {
     const shouldShowSearchBar = location.pathname === '/animalList';
 
     return (
-        <div className="container">
-            <nav className="navbar">
+        
+            <nav id="main-navbar">
                 <NavLink to="/">Home</NavLink> 
                 <NavLink to="/animalList">Animal List</NavLink> 
-                <NavLink to="/addAnimal">Add a new animal</NavLink>
+                <NavLink to="/addAnimal">Add new animal</NavLink>
 
                 {shouldShowSearchBar && (
                     <form className="d-flex">
@@ -24,7 +24,7 @@ function Navbar({ searchTerm, onSearchChange }) {
                     </form>
                 )}
             </nav>
-        </div >
+      
     );
 }
 
