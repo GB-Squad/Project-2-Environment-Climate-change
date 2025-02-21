@@ -1,5 +1,5 @@
 import { FaEnvelope, FaGithub } from "react-icons/fa";
-import "../Styles/Footer.css"; // Import the CSS file
+import "../Styles/Footer.css"; 
 
 export default function Footer() {
     return (

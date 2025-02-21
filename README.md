@@ -2,6 +2,9 @@
 
 This wildlife tracker website provides an interactive platform for monitoring endangered species. The site features a homepage displaying a pie chart representing the levels of endangered species and a map with markers pinpointing the geographic locations of animals. Users can view, add, edit, and delete animal information, making it a powerful tool for tracking wildlife populations and their conservation statuses.
 
+## URL  to the Website
+https://wildlife-watcher.netlify.app/
+
 ## Features
 
 - **Home Page:**
@@ -19,7 +22,7 @@ This wildlife tracker website provides an interactive platform for monitoring en
 
 - **Edit Animal Page:**
   - Users can navigate to the **Edit Animal** page by clicking the **Edit** button on the Animal Detail page.
-  - Allows users to edit and update the information for a specific animal. 
+  - Allows users to edit and update the information for a specific animal.
   - Once the changes are made, users can save the updated details.
 
 - **Add Animal Page:**
@@ -32,19 +35,18 @@ This wildlife tracker website provides an interactive platform for monitoring en
   - HTML
   - CSS
   - JavaScript
-  - Chart.js (for the pie chart)
-  - Leaflet.js (for the interactive map)
+   - React
+  - ReCharts.js (for the pie chart)
+  - Leaflet.js (for the interactive map and Map provided by **Stadia Maps**)
+
 
 - **Backend:**
   - Firebase API (for data storage and management)
 
-## Usage
-
-- On the **Home Page**, you can view the pie chart and interactive map. Clicking on a map marker will take you to the specific animal detail page.
-- From the **Animal Listing Page**, you can view all available animals and either view their details or delete them.
-- On the **Animal Detail Page**, users can see detailed information and edit it using the **Edit Page**.
-- The **Add Animal Page** allows you to add new animals to the database, and they will be immediately displayed on the map.
-
 ## Contributing
 
 Feel free to fork this project and submit pull requests. If you'd like to contribute, please open an issue or submit a pull request for any bugs or improvements you notice.
+
+
+
+
